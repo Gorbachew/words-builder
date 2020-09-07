@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".level.LevelActivity">
+
+
+    <LinearLayout
+        android:id="@+id/techBtnLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="6"
+        android:orientation="horizontal"
+        android:padding="10pt">
+        <Button
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exit" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/wordsPlace"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:orientation="horizontal">
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/userWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:text="@string/empty"
+        android:textSize="12pt" />
+
+    <LinearLayout
+        android:id="@+id/letterPlace"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="6"
+        android:orientation="vertical"
+        android:padding="10pt" />
+
+    <LinearLayout
+        android:id="@+id/helpBtns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:padding="10pt"
+        tools:ignore="RtlHardcoded">
+
+        <Button
+            android:id="@+id/btnDeleteLastLetter"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@string/delete"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@string/ok"
+            tools:ignore="ButtonStyle" />
+    </LinearLayout>
+
+</LinearLayout>

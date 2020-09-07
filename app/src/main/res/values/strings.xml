@@ -1,0 +1,77 @@
+<resources>
+    <string name="app_name">WordsBuilder</string>
+
+    <string name="empty">null</string>
+
+    <!--Btns-->
+    <string name="exit">Выход</string>
+    <string name="reset">Сброс</string>
+    <string name="back">Назад</string>
+    <string name="delete">Уд</string>
+    <string name="ok">Ок</string>
+
+    <!--lvlBtns-->
+    <string name="btns1lvl">трактор</string>
+    <string name="btns2lvl">регистрация</string>
+    <string name="btns3lvl">клавиатура</string>
+
+    <string name="btns4lvl">эвкалипт</string>
+    <string name="btns5lvl">дельтаплан</string>
+    <string name="btns6lvl">демократия</string>
+
+    <!--Messages-->
+    <string name="resetDb">Весь прогресс сброшен</string>
+
+    <!--WordsArray-->
+    <string-array name="parent_words">
+        <item>трактор</item><item>регистрация</item><item>клавиатура</item>
+        <item>эвкалипт</item><item>дельтаплан</item><item>демократия</item>
+    </string-array>
+
+    <string-array name="tractor">
+        <item>ор</item><item>рок</item><item>рот</item>
+        <item>ток</item><item>арт</item><item>рак</item>
+        <item>тор</item><item>торт</item><item>такт</item>
+        <item>рота</item><item>корт</item><item>кора</item>
+        <item>откат</item>
+    </string-array>
+    <string-array name="registration">
+        <item>тяг</item><item>три</item><item>тир</item>
+        <item>тег</item><item>сир</item><item>рис</item>
+        <item>тире</item><item>тигр</item><item>стяг</item>
+        <item>рига</item><item>гиря</item><item>герц</item>
+        <item>истец</item><item>растеря</item><item>артерия</item>
+    </string-array>
+    <string-array name="keyboard">
+        <item>ил</item><item>лак</item><item>вал</item>
+        <item>лук</item><item>руки</item><item>литр</item>
+        <item>лава</item><item>кара</item><item>акрил</item>
+        <item>улика</item><item>трава</item><item>втулка</item>
+        <item>ритуал</item><item>караул</item><item>артикул</item>
+    </string-array>
+
+    <string-array name="eucalyptus">
+        <item>тип</item><item>пат</item><item>лик</item>
+        <item>кит</item><item>этил</item><item>этап</item>
+        <item>эпик</item><item>пита</item><item>кипа</item>
+        <item>квит</item><item>этика</item><item>элита</item>
+        <item>лапти</item><item>капли</item><item>валик</item>
+        <item>актив</item><item>плавки</item><item>плитка</item>
+    </string-array>
+    <string-array name="hangGlider">
+        <item>лен</item><item>лад</item><item>ель</item>
+        <item>еда</item><item>тлен</item><item>плед</item>
+        <item>пень</item><item>паль</item><item>день</item>
+        <item>дата</item><item>талант</item><item>плеть</item>
+        <item>панда</item><item>пенал</item><item>плата</item>
+        <item>адепт</item><item>платье</item><item>педант</item>
+    </string-array>
+    <string-array name="democracy">
+        <item>корт</item><item>крем</item><item>кора</item>
+        <item>кедр</item><item>идея</item><item>дека</item>
+        <item>атом</item><item>радио</item><item>кадет</item>
+        <item>икота</item><item>диета</item><item>теория</item>
+        <item>диарея</item><item>доярка</item><item>методика</item>
+        <item>материя</item><item>медиатор</item><item>демократ</item>
+    </string-array>
+</resources>
