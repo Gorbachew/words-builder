@@ -13,32 +13,40 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_level.*
 import ru.gorbachewstudio.wordsbulder.MainActivity
 import ru.gorbachewstudio.wordsbulder.R
-import ru.gorbachewstudio.wordsbulder.dbhelper.Word
-import ru.gorbachewstudio.wordsbulder.dbhelper.WordStorage
+import ru.gorbachewstudio.wordsbulder.word.Word
+import ru.gorbachewstudio.wordsbulder.save.WordStorage
+import ru.gorbachewstudio.wordsbulder.word.WordObj
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "CAST_NEVER_SUCCEEDS")
 class LevelActivity : AppCompatActivity() {
 
-    private lateinit var _word: String
+    private lateinit var _parentWord: String
     private var idRow: Int = 1000
     private var idColumn: Int = 2000
     private lateinit var wordsArr: ArrayList<Word>
+    private var wordsObjArr: ArrayList<WordObj> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_level)
 
-        _word = intent.getStringExtra("word")
-        wordsArr = WordStorage(this).getWords(_word)
+        _parentWord = intent.getStringExtra("word")
+        wordsArr = WordStorage(this).getWords(_parentWord)
 
         buttonsClick()
         generateWords(wordsArr)
-        generateLetters(_word)
+        generateLetters(_parentWord)
 
         userWord.text = ""
     }
 
     private fun buttonsClick(){
+        btnOk.setOnClickListener{
+            checkGuessedWord(wordsArr, userWord.text as String).toString()
+            userWord.text = ""
+            wordsArr = WordStorage(this).getWords(_parentWord)
+            checkOpenedWord(wordsObjArr)
+        }
         backBtn.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -55,6 +63,7 @@ class LevelActivity : AppCompatActivity() {
 
     private fun generateWords(arr: ArrayList<Word>){
         arr.forEachIndexed{index, element -> inflateText(index, element)}
+        checkOpenedWord(wordsObjArr)
     }
 
     private fun generateLetters(word: String){
@@ -66,11 +75,16 @@ class LevelActivity : AppCompatActivity() {
         if(id == 0 || id % 10 == 0){
             inflateTextColumn()
         }
-        Log.e("TEST", idColumn.toString() + " " + element.word)
+        Log.e("TEST", idColumn.toString() + " " + element.id + " " + element.word)
 
         val textObj = TextView(this)
+
+        val wordObj = WordObj()
+        wordObj.id = id
+        wordObj.obj = textObj
+        wordsObjArr.add(wordObj)
+
         textObj.layoutParams = LinearLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT,100)
-        textObj.text = element.word
         textObj.textSize = 20f
         findViewById<LinearLayout>(idColumn).addView(textObj)
     }
@@ -116,6 +130,28 @@ class LevelActivity : AppCompatActivity() {
         layout.setPadding(50,0,0,0)
         layout.orientation = LinearLayout.VERTICAL
         wordsPlace.addView(layout)
+    }
+
+    private fun checkGuessedWord(words: ArrayList<Word>, word: String){
+        words.forEach{
+            if(it.word == word){
+                WordStorage(this).openWord(it.id)
+                return
+            }
+        }
+    }
+
+    private fun checkOpenedWord(wordsObj: ArrayList<WordObj>){
+        wordsObj.forEach {
+            val word = wordsArr[it.id]
+            val textWord = word.word
+            val obj = it.obj
+            if (word.state == 0) {
+                obj.text = textWord.replace(Regex("[А-Яа-я]"), "*")
+            } else {
+                obj.text = textWord
+            }
+        }
     }
 }
 

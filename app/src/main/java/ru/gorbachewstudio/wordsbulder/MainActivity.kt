@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_main.*
-import ru.gorbachewstudio.wordsbulder.dbhelper.WordStorage
+import ru.gorbachewstudio.wordsbulder.save.WordStorage
 import ru.gorbachewstudio.wordsbulder.level.LevelActivity
 
 class MainActivity : AppCompatActivity(){

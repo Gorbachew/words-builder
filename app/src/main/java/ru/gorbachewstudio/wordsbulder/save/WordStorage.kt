@@ -1,4 +1,4 @@
-package ru.gorbachewstudio.wordsbulder.dbhelper
+package ru.gorbachewstudio.wordsbulder.save
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -6,6 +6,7 @@ import android.content.ContentValues
 import android.util.Log
 import android.widget.Toast
 import ru.gorbachewstudio.wordsbulder.R
+import ru.gorbachewstudio.wordsbulder.word.Word
 
 class WordStorage(activity: Activity){
 
@@ -71,6 +72,19 @@ class WordStorage(activity: Activity){
         val database = dbHelper.writableDatabase
         database.delete(DBHelper.TABLE_WORDS, null, null)
         Toast.makeText(_activity, _activity.resources.getString(R.string.resetDb),Toast.LENGTH_LONG).show()
+    }
+
+    fun openWord(id: Int){
+        val dbHelper = DBHelper(_activity)
+        val database = dbHelper.writableDatabase
+        val cv = ContentValues()
+        cv.put(DBHelper.KEY_STATE, 1)
+        database.update(
+            DBHelper.TABLE_WORDS, cv,
+            java.lang.String.format("%s = %s", DBHelper.KEY_ID, id),
+            null
+        )
+        dbHelper.close()
     }
 
     private fun connectArrays(){

@@ -1,4 +1,4 @@
-package ru.gorbachewstudio.wordsbulder.dbhelper
+package ru.gorbachewstudio.wordsbulder.word
 
 class Word{
     var id: Int = 0
