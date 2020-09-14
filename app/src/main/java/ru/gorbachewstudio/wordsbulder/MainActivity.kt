@@ -3,6 +3,7 @@ package ru.gorbachewstudio.wordsbulder
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.widget.Button
 import android.widget.FrameLayout
@@ -57,10 +58,14 @@ class MainActivity : AppCompatActivity(){
         }
         val buttonLayout = Button(this)
         buttonLayout.layoutParams = FrameLayout.LayoutParams(300,200)
-        buttonLayout.text = element
+
+        val name = element + "\n" +
+                WordStorage(this).getOpenWordCount(element) + " / " + WordStorage(this).getWordCount(element)
+        buttonLayout.text = name
         buttonLayout.setOnClickListener{
             val b = it as Button
-            openLevel(b.text as String)
+            val word = b.text.split("\n")
+            openLevel(word[0])
         }
         findViewById<LinearLayout>(idRow).addView(buttonLayout)
     }

@@ -2,6 +2,7 @@ package ru.gorbachewstudio.wordsbulder.level
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_level.*
 import ru.gorbachewstudio.wordsbulder.MainActivity
 import ru.gorbachewstudio.wordsbulder.R
@@ -25,6 +27,7 @@ class LevelActivity : AppCompatActivity() {
     private var idColumn: Int = 2000
     private lateinit var wordsArr: ArrayList<Word>
     private var wordsObjArr: ArrayList<WordObj> = ArrayList()
+    private var disabledButtons: ArrayList<Button> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +49,12 @@ class LevelActivity : AppCompatActivity() {
             userWord.text = ""
             wordsArr = WordStorage(this).getWords(_parentWord)
             checkOpenedWord(wordsObjArr)
+
+            disabledButtons.forEach {
+                it.setBackgroundColor(resources.getColor(R.color.colorLightGrey))
+                it.isClickable = true
+            }
+            disabledButtons.clear()
         }
         backBtn.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
@@ -54,9 +63,17 @@ class LevelActivity : AppCompatActivity() {
         }
         btnDeleteLastLetter.setOnClickListener{
             userWord.text = userWord.text.dropLast(1)
+            disabledButtons[disabledButtons.size - 1].isClickable = true;
+            disabledButtons[disabledButtons.size - 1].setBackgroundColor(resources.getColor(R.color.colorLightGrey))
+            disabledButtons.removeAt(disabledButtons.size - 1)
         }
         btnDeleteLastLetter.setOnLongClickListener {
             userWord.text = ""
+            disabledButtons.forEach {
+                it.setBackgroundColor(resources.getColor(R.color.colorLightGrey))
+                it.isClickable = true
+            }
+            disabledButtons.clear()
             true
         }
     }
@@ -75,7 +92,6 @@ class LevelActivity : AppCompatActivity() {
         if(id == 0 || id % 10 == 0){
             inflateTextColumn()
         }
-        Log.e("TEST", idColumn.toString() + " " + element.id + " " + element.word)
 
         val textObj = TextView(this)
 
@@ -97,10 +113,14 @@ class LevelActivity : AppCompatActivity() {
                 inflateBtnRow()
             }
             val buttonObj = Button(this)
+
             buttonObj.layoutParams = LinearLayout.LayoutParams(150,150)
             buttonObj.text = letter
             buttonObj.setOnClickListener{
                 userWord.text = userWord.text.toString() + buttonObj.text.toString()
+                disabledButtons.add(buttonObj)
+                buttonObj.isClickable = false
+                buttonObj.setBackgroundColor(R.color.colorDarkGray)
             }
             findViewById<LinearLayout>(idRow).addView(buttonObj)
         }

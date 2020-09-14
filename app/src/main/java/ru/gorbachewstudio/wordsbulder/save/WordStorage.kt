@@ -3,10 +3,13 @@ package ru.gorbachewstudio.wordsbulder.save
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
+import android.database.DatabaseUtils
+import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import android.widget.Toast
 import ru.gorbachewstudio.wordsbulder.R
 import ru.gorbachewstudio.wordsbulder.word.Word
+
 
 class WordStorage(activity: Activity){
 
@@ -86,6 +89,21 @@ class WordStorage(activity: Activity){
         )
         dbHelper.close()
     }
+
+    fun getWordCount(parent_word: String): String{
+        val db: SQLiteDatabase = dbHelper.readableDatabase
+        val result = DatabaseUtils.queryNumEntries(db, DBHelper.TABLE_WORDS, String.format("%s = '%s'", DBHelper.KEY_PARENT_WORD, parent_word))
+        db.close()
+        return result.toString()
+    }
+
+    fun getOpenWordCount(parent_word: String): String{
+        val db: SQLiteDatabase = dbHelper.readableDatabase
+        val result = DatabaseUtils.queryNumEntries(db, DBHelper.TABLE_WORDS, String.format("%s = '%s' AND state = 1", DBHelper.KEY_PARENT_WORD, parent_word))
+        db.close()
+        return result.toString()
+    }
+
 
     private fun connectArrays(){
         allWords.add(_activity.resources.getStringArray(R.array.tractor))
