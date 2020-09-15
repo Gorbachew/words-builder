@@ -2,6 +2,7 @@ package ru.gorbachewstudio.wordsbulder.level
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.PorterDuff
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -51,7 +52,7 @@ class LevelActivity : AppCompatActivity() {
             checkOpenedWord(wordsObjArr)
 
             disabledButtons.forEach {
-                it.setBackgroundColor(resources.getColor(R.color.colorLightGrey))
+                it.background.setColorFilter(resources.getColor(R.color.colorLightGrey), PorterDuff.Mode.DARKEN)
                 it.isClickable = true
             }
             disabledButtons.clear()
@@ -64,13 +65,13 @@ class LevelActivity : AppCompatActivity() {
         btnDeleteLastLetter.setOnClickListener{
             userWord.text = userWord.text.dropLast(1)
             disabledButtons[disabledButtons.size - 1].isClickable = true;
-            disabledButtons[disabledButtons.size - 1].setBackgroundColor(resources.getColor(R.color.colorLightGrey))
+            disabledButtons[disabledButtons.size - 1].background.setColorFilter(resources.getColor(R.color.colorLightGrey), PorterDuff.Mode.DARKEN)
             disabledButtons.removeAt(disabledButtons.size - 1)
         }
         btnDeleteLastLetter.setOnLongClickListener {
             userWord.text = ""
             disabledButtons.forEach {
-                it.setBackgroundColor(resources.getColor(R.color.colorLightGrey))
+                it.background.setColorFilter(resources.getColor(R.color.colorLightGrey), PorterDuff.Mode.DARKEN)
                 it.isClickable = true
             }
             disabledButtons.clear()
@@ -120,7 +121,7 @@ class LevelActivity : AppCompatActivity() {
                 userWord.text = userWord.text.toString() + buttonObj.text.toString()
                 disabledButtons.add(buttonObj)
                 buttonObj.isClickable = false
-                buttonObj.setBackgroundColor(R.color.colorDarkGray)
+                buttonObj.background.setColorFilter(resources.getColor(R.color.colorDarkGray), PorterDuff.Mode.DARKEN)
             }
             findViewById<LinearLayout>(idRow).addView(buttonObj)
         }
