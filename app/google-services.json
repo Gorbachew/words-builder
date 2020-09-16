@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "315431121167",
+    "firebase_url": "https://wordsbuilder-69e87.firebaseio.com",
+    "project_id": "wordsbuilder-69e87",
+    "storage_bucket": "wordsbuilder-69e87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315431121167:android:006f220d0d71e4a2998e7a",
+        "android_client_info": {
+          "package_name": "ru.gorbachewstudio.wordsbuilder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "315431121167-h2dtnjh8v1cgpjh0dkl24vc2m3op0912.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoALXSxXC6RlAYlDlFv3Nfm_qNy2P-JgI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "315431121167-h2dtnjh8v1cgpjh0dkl24vc2m3op0912.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

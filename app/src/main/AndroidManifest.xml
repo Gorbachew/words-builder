@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ru.gorbachewstudio.wordsbulder">
+    package="ru.gorbachewstudio.wordsbuilder">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -9,8 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".level.LevelActivity" />
-        <activity android:name=".MainActivity">
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-6876201111676185~5172962753"/>
+
+        <activity android:name="ru.gorbachewstudio.wordsbuilder.level.LevelActivity" />
+        <activity android:name="ru.gorbachewstudio.wordsbuilder.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

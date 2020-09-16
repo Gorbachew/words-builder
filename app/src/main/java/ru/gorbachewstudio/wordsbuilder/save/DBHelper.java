@@ -1,4 +1,4 @@
-package ru.gorbachewstudio.wordsbulder.save;
+package ru.gorbachewstudio.wordsbuilder.save;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

@@ -1,4 +1,4 @@
-package ru.gorbachewstudio.wordsbulder.save
+package ru.gorbachewstudio.wordsbuilder.save
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -7,8 +7,8 @@ import android.database.DatabaseUtils
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import android.widget.Toast
-import ru.gorbachewstudio.wordsbulder.R
-import ru.gorbachewstudio.wordsbulder.word.Word
+import ru.gorbachewstudio.wordsbuilder.R
+import ru.gorbachewstudio.wordsbuilder.word.Word
 
 
 class WordStorage(activity: Activity){

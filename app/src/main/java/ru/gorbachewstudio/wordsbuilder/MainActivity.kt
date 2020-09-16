@@ -1,24 +1,28 @@
-package ru.gorbachewstudio.wordsbulder
+package ru.gorbachewstudio.wordsbuilder
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.activity_main.*
-import ru.gorbachewstudio.wordsbulder.save.WordStorage
-import ru.gorbachewstudio.wordsbulder.level.LevelActivity
+import ru.gorbachewstudio.wordsbuilder.save.WordStorage
+import ru.gorbachewstudio.wordsbuilder.level.LevelActivity
 
 class MainActivity : AppCompatActivity(){
 
     private var idRow: Int = 0
+    private var mFirebaseAnalytics: FirebaseAnalytics? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
         buttonsClick()
 
         val wordStorage = WordStorage(this)

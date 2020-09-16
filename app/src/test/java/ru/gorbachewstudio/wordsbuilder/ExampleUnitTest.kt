@@ -1,4 +1,4 @@
-package ru.gorbachewstudio.wordsbulder
+package ru.gorbachewstudio.wordsbuilder
 
 import org.junit.Test
 

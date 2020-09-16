@@ -1,29 +1,31 @@
-package ru.gorbachewstudio.wordsbulder.level
+package ru.gorbachewstudio.wordsbuilder.level
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.PorterDuff
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_level.*
-import ru.gorbachewstudio.wordsbulder.MainActivity
-import ru.gorbachewstudio.wordsbulder.R
-import ru.gorbachewstudio.wordsbulder.word.Word
-import ru.gorbachewstudio.wordsbulder.save.WordStorage
-import ru.gorbachewstudio.wordsbulder.word.WordObj
+import ru.gorbachewstudio.wordsbuilder.MainActivity
+import ru.gorbachewstudio.wordsbuilder.R
+import ru.gorbachewstudio.wordsbuilder.save.WordStorage
+import ru.gorbachewstudio.wordsbuilder.word.Word
+import ru.gorbachewstudio.wordsbuilder.word.WordObj
+
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "CAST_NEVER_SUCCEEDS")
 class LevelActivity : AppCompatActivity() {
 
     private lateinit var _parentWord: String
+    lateinit var mAdView : AdView
     private var idRow: Int = 1000
     private var idColumn: Int = 2000
     private lateinit var wordsArr: ArrayList<Word>
@@ -42,6 +44,8 @@ class LevelActivity : AppCompatActivity() {
         generateLetters(_parentWord)
 
         userWord.text = ""
+
+        adBanner()
     }
 
     private fun buttonsClick(){
@@ -173,6 +177,13 @@ class LevelActivity : AppCompatActivity() {
                 obj.text = textWord
             }
         }
+    }
+
+    private fun adBanner(){
+        MobileAds.initialize(this) {}
+
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
     }
 }
 
