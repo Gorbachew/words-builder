@@ -16,7 +16,7 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-6876201111676185~5172962753"/>
 
-        <activity android:name="ru.gorbachewstudio.wordsbuilder.level.LevelActivity" />
+        <activity android:name="ru.gorbachewstudio.wordsbuilder.levels.LevelActivity" />
         <activity android:name="ru.gorbachewstudio.wordsbuilder.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

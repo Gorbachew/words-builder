@@ -1,9 +1,10 @@
-package ru.gorbachewstudio.wordsbuilder.level
+package ru.gorbachewstudio.wordsbuilder.levels
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.widget.Button
 import android.widget.FrameLayout
@@ -30,7 +31,8 @@ class LevelActivity : AppCompatActivity() {
     private var idColumn: Int = 2000
     private lateinit var wordsArr: ArrayList<Word>
     private var wordsObjArr: ArrayList<WordObj> = ArrayList()
-    private var disabledButtons: ArrayList<Button> = ArrayList()
+    private var allLetterButton: ArrayList<Button> = ArrayList()
+    private var disabledLetterButtons: ArrayList<Button> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,10 +44,13 @@ class LevelActivity : AppCompatActivity() {
         buttonsClick()
         generateWords(wordsArr)
         generateLetters(_parentWord)
+        activateAllLetterBtn()
 
         userWord.text = ""
 
         adBanner()
+
+
     }
 
     private fun buttonsClick(){
@@ -54,12 +59,8 @@ class LevelActivity : AppCompatActivity() {
             userWord.text = ""
             wordsArr = WordStorage(this).getWords(_parentWord)
             checkOpenedWord(wordsObjArr)
-
-            disabledButtons.forEach {
-                it.background.setColorFilter(resources.getColor(R.color.colorLightGrey), PorterDuff.Mode.DARKEN)
-                it.isClickable = true
-            }
-            disabledButtons.clear()
+            activateAllLetterBtn()
+            disabledLetterButtons.clear()
         }
         backBtn.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
@@ -68,17 +69,14 @@ class LevelActivity : AppCompatActivity() {
         }
         btnDeleteLastLetter.setOnClickListener{
             userWord.text = userWord.text.dropLast(1)
-            disabledButtons[disabledButtons.size - 1].isClickable = true;
-            disabledButtons[disabledButtons.size - 1].background.setColorFilter(resources.getColor(R.color.colorLightGrey), PorterDuff.Mode.DARKEN)
-            disabledButtons.removeAt(disabledButtons.size - 1)
+            disabledLetterButtons[disabledLetterButtons.size - 1].isClickable = true;
+            disabledLetterButtons[disabledLetterButtons.size - 1].background.setColorFilter(resources.getColor(R.color.colorLightGrey), PorterDuff.Mode.DARKEN)
+            disabledLetterButtons.removeAt(disabledLetterButtons.size - 1)
         }
         btnDeleteLastLetter.setOnLongClickListener {
             userWord.text = ""
-            disabledButtons.forEach {
-                it.background.setColorFilter(resources.getColor(R.color.colorLightGrey), PorterDuff.Mode.DARKEN)
-                it.isClickable = true
-            }
-            disabledButtons.clear()
+            activateAllLetterBtn()
+            disabledLetterButtons.clear()
             true
         }
     }
@@ -123,10 +121,11 @@ class LevelActivity : AppCompatActivity() {
             buttonObj.text = letter
             buttonObj.setOnClickListener{
                 userWord.text = userWord.text.toString() + buttonObj.text.toString()
-                disabledButtons.add(buttonObj)
+                disabledLetterButtons.add(buttonObj)
                 buttonObj.isClickable = false
                 buttonObj.background.setColorFilter(resources.getColor(R.color.colorDarkGray), PorterDuff.Mode.DARKEN)
             }
+            allLetterButton.add(buttonObj)
             findViewById<LinearLayout>(idRow).addView(buttonObj)
         }
     }
@@ -184,6 +183,13 @@ class LevelActivity : AppCompatActivity() {
 
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
+    }
+
+    private fun activateAllLetterBtn(){
+        allLetterButton.forEach {
+            it.background.setColorFilter(resources.getColor(R.color.colorLightGrey), PorterDuff.Mode.DARKEN)
+            it.isClickable = true
+        }
     }
 }
 
