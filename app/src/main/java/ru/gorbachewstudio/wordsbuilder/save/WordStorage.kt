@@ -104,6 +104,22 @@ class WordStorage(activity: Activity){
         return result.toString()
     }
 
+    fun checkNewWords(parentWords: Array<String>){
+        val cursor = dbHelper.readableDatabase.rawQuery(String.format("SELECT COUNT(DISTINCT %s) as 'countParentWords' FROM %s", DBHelper.KEY_PARENT_WORD, DBHelper.TABLE_WORDS), null)
+        var wordsInBd = 0
+        if(cursor.moveToFirst()){
+            val idCount = cursor.getColumnIndex("countParentWords")
+            do {
+                wordsInBd = cursor.getInt(idCount)
+            }while (cursor.moveToNext())
+        } else{
+            Log.d("mLog", "db empty")
+        }
+        if(wordsInBd < parentWords.size){
+            createWords()
+        }
+        cursor.close()
+    }
 
     private fun connectArrays(){
         allWords.add(_activity.resources.getStringArray(R.array.tractor))
@@ -113,6 +129,9 @@ class WordStorage(activity: Activity){
         allWords.add(_activity.resources.getStringArray(R.array.eucalyptus))
         allWords.add(_activity.resources.getStringArray(R.array.hangGlider))
         allWords.add(_activity.resources.getStringArray(R.array.democracy))
+
+        allWords.add(_activity.resources.getStringArray(R.array.floristics))
+        allWords.add(_activity.resources.getStringArray(R.array.сongeniality))
     }
 
 }

@@ -12,15 +12,6 @@
     <string name="delete">Уд</string>
     <string name="ok">Ок</string>
 
-    <!--lvlBtns-->
-    <string name="btns1lvl">трактор</string>
-    <string name="btns2lvl">регистрация</string>
-    <string name="btns3lvl">клавиатура</string>
-
-    <string name="btns4lvl">эвкалипт</string>
-    <string name="btns5lvl">дельтаплан</string>
-    <string name="btns6lvl">демократия</string>
-
     <!--Messages-->
     <string name="resetDb">Весь прогресс сброшен</string>
 
@@ -28,14 +19,16 @@
     <string-array name="parent_words">
         <item>трактор</item><item>регистрация</item><item>клавиатура</item>
         <item>эвкалипт</item><item>дельтаплан</item><item>демократия</item>
+        <item>флористика</item><item>конгениальность</item>
     </string-array>
 
     <string-array name="tractor">
-        <item>ор</item><item>рок</item><item>рот</item>
+        <item>ор</item><item>акт</item><item>рок</item><item>рот</item>
         <item>ток</item><item>арт</item><item>рак</item>
         <item>тор</item><item>торт</item><item>такт</item>
         <item>рота</item><item>корт</item><item>кора</item>
-        <item>откат</item>
+        <item>откат</item><item>тракт</item><item>токар</item>
+
     </string-array>
     <string-array name="registration">
         <item>тяг</item><item>три</item><item>тир</item>
@@ -76,4 +69,35 @@
         <item>диарея</item><item>доярка</item><item>методика</item>
         <item>материя</item><item>медиатор</item><item>демократ</item>
     </string-array>
+    <string-array name="floristics">
+        <item>Лор</item><item>Лис</item><item>Лиф</item>
+        <item>Тир</item><item>Рок</item><item>Сор</item>
+        <item>Рис</item><item>Форт</item><item>Трос</item>
+        <item>Толк</item><item>Торс</item><item>Фтор</item>
+        <item>Факт</item><item>Флирт</item><item>Флора</item>
+        <item>Фактор</item><item>Софит</item>
+    </string-array>
+    <string-array name="сongeniality">
+        <item>Ген</item><item>Гон</item><item>Лак</item>
+        <item>Нос</item><item>Кол</item><item>Оса</item>
+        <item>Тис</item><item>Сон</item><item>Сгон</item>
+        <item>Лень</item><item>Лист</item><item>Лось</item>
+        <item>Конь</item><item>Альт</item><item>Нога</item>
+        <item>Тлен</item><item>Икона</item><item>Канон</item>
+        <item>Конго</item><item>Стена</item><item>Гость</item>
+        <item>Агент</item><item>Леность</item><item>Консент</item>
+        <item>Кинолента</item><item>Наклонность</item>
+    </string-array>
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>
